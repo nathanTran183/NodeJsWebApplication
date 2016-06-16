@@ -1,0 +1,37 @@
+extends ../layout
+
+block content
+    .col-lg-10
+      .widget-item
+        h2.prof-name-list.text-center ADD NEW EMPLOYEE
+        hr
+        form(class='form-horizontal' ,action='/employee/add', method='post')
+          .form-group
+            label.col-lg-3.control-label Full Name
+            .col-lg-9
+              input.form-control(type='text', name='fullname')          
+          .form-group
+            label.col-lg-3.control-label Address
+            .col-lg-9
+              input.form-control(type='text', name='address',required)          
+          .form-group
+            label.col-lg-3.control-label Phone
+            .col-lg-9
+              input.form-control(type='text', name='phone',required)          
+          .form-group
+            label.col-lg-3.control-label Email
+            .col-lg-9
+              input.form-control(type='email', name='email',required)          
+          .form-group
+              label.col-sm-3.control-label(for='gender') Gender
+              .col-sm-6                
+                  input(type='radio',checked, name='gender', value='male', data-toggle='radio') 
+                  | Male
+                  br
+                  input(type='radio', name='gender', value='female', data-toggle='radio')
+                  | Female
+                  br
+          .form-group
+            .col-md-offset-3.col-md-8
+              input.btn.btn-danger(type='submit', value='Tạo mới')
+              a.btn.btn-primary(href='/employee/index') Quay lại

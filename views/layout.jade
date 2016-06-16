@@ -1,0 +1,28 @@
+doctype html
+html
+  head    
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css') 
+    link(href='/css/bootstrap.min.css', rel='stylesheet')    
+    link(href='/css/shop-item.css', rel='stylesheet')
+    // jQuery
+    script(src='/js/jquery.js')
+    script(src='/js/jquery.min.js')
+    // Bootstrap Core JavaScript
+    script(src='../js/bootstrap.min.js')
+    //script(src='/js/main.js')
+  body
+    include partial/header
+    #wrapper
+     include partial/navigation
+     #page-wrapper
+      .container       
+       .row         
+        include partial/flash       
+        block content
+      include partial/footer  

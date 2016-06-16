@@ -1,0 +1,32 @@
+extends ../layout
+
+block content
+    h2.text-center EMPLOYEE MANAGEMENT
+    br
+    br
+    p
+      a(href='/employee/add') Add new employee
+    table.table
+      tr
+        th ID
+        th Name
+        th Address
+        th Phone
+        th Email
+        th Gender
+        th
+      each employee, i in list
+       tr
+        td= i+1
+        td= employee.fullname
+        td= employee.address
+        td= employee.phone
+        td= employee.email
+        td= employee.gender
+        td           
+          a.btn.btn-warning.btn-sm(href='/employee/edit?id='+employee.id, role='button')
+            span.glyphicon.glyphicon-pencil(title='Edit Employee', aria-hidden='true')
+          |  
+          a.btn.btn-danger.btn-sm(href='/employee/delete?id='+employee.id, role='button')
+            span.glyphicon.glyphicon-trash(title='Delete Employee', aria-hidden='true')
+          

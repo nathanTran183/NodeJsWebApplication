@@ -1,0 +1,52 @@
+extends layout
+
+block content
+	h1.
+		Danh sách người dùng
+
+	script(src="/js/func.js")
+
+	table(class="table table-striped")
+		caption Dữ liệu
+		thead
+			tr			
+				th(data-sortable='true') Id	
+				th(data-sortable='true') Username
+				th(data-sortable='true') Password
+				th(data-sortable='true') Email
+		tbody
+			each user, i in userlist
+				tr		
+					td= user.id			
+					td= user.username
+					td= user.password
+					td= user.email
+					td
+						span.glyphicon.glyphicon-pencil
+						a(data-toggle="modal" data-target="#EditUser",, onClick="document.getElementById('ModalFrame').src='/edituser?username=#{user.username}';") Sửa
+						span &nbsp;
+						span.glyphicon.glyphicon-trash
+						a(href="/deleteuser?username=#{user.username}", onClick="return confirm('Chắc chắn xóa?')") Xóa
+
+	h1 Thêm người dùng mới
+	form#formAddUser.form.form-inline(name="adduser",method="post",action="/adduser")
+		input#inputUserName.form-control(type="text", placeholder="Tài khoản", name="username",required)
+		input#inputUserPassword.form-control(type="password", placeholder="Mật khẩu", name="password",required)
+		input#inputUserFullName.form-control(type="text", placeholder="Họ tên", name="fullname",required)
+		input#inputUserAddress.form-control(type="text", placeholder="Địa chỉ", name="address",required)
+		input#inputUserPhone.form-control(type="text", placeholder="Số điện thoại", name="phone",required)
+		input#inputUserName.form-control(type="text", placeholder="Email", name="email",required)
+		button#btnSubmit.btn.btn-success(type="submit") Thêm
+
+	
+	div#EditUser.modal.fade(role="dialog")
+		div.modal-dialog.modal-lg(style="width: 750px; height: 500px;")
+			div.modal-content
+				div.modal-header
+					div.col-xs-10
+						h4.modal-title
+							strong Sửa thông tin người dùng
+					div.col-xs-2
+						button.btn.btn-sm.btn-block.btn-default(type="button", data-dismiss="modal", onFocus="location.reload();") Đóng
+				div.modal-body
+					iframe#ModalFrame(src="", style="border: none; width: 100%; height: 450px;")
