@@ -1,0 +1,27 @@
+extends ../layout
+
+block content
+    .widget-item
+          .col-lg-10
+            h2.prof-name-list.text-center DO YOU WANT TO DELETE THIS DEPARTMENT!
+            hr
+            .col-lg-2
+            .col-lg-10
+              dl.dl-horizontal
+                dt Id
+                dd= department.id
+                dt Full Name
+                dd= department.name   
+                dt Office Phone
+                dd= department.officephone
+                dt Manager
+                if department.manager!=null
+                 dd= department.manager.fullname
+                else
+                 dd= "Is not Appointed!"
+            form(name='DeleteForm', method='post', action='/department/delete')
+              .form-group
+                .col-md-offset-4.col-lg-8
+                  input(type='hidden', name='id', value=department.id)
+                  input.btn.btn-danger(type='submit', value='Delete')
+                  a.btn.btn-primary(href='/department/index') Back to list

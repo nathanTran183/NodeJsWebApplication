@@ -1,0 +1,55 @@
+extends ../layout
+
+block content
+    .col-lg-10
+      .widget-item
+        h2.prof-name-list.text-center EDIT EMPLOYEE
+        hr
+        form(class='form-horizontal' ,action='/employee/edit', method='post')
+          input(type='hidden', name='id', value=employee.id)
+          .form-group
+            label.col-lg-3.control-label Full Name
+            .col-lg-9
+              input.form-control(type='text', name='fullname',value= employee.fullname,required)                                 
+          .form-group
+              label.col-sm-3.control-label Department
+              .col-sm-6                     
+                if flag==false
+                 select.form-control(name='department')
+                  each dep, i in list
+                   if employee.department.id==dep.id
+                    option(value= dep.id,selected='selected')= dep.name
+                   else 
+                    option(value= dep.id)= dep.name 
+                else
+                 select.form-control(name='department',disabled)
+                  each dep, i in list
+                   if employee.department.id==dep.id
+                    option(value= dep.id,selected='selected')= dep.name
+                   else 
+                    option(value= dep.id)= dep.name 
+          .form-group
+            label.col-lg-3.control-label Address
+            .col-lg-9
+              input.form-control(type='text', name='address',required,value= employee.address)          
+          .form-group
+            label.col-lg-3.control-label Phone
+            .col-lg-9
+              input.form-control(type='text', name='phone',required,value= employee.phone)          
+          .form-group
+            label.col-lg-3.control-label Email
+            .col-lg-9
+              input.form-control(type='email', name='email',required,value= employee.email)          
+          .form-group
+              label.col-sm-3.control-label(for='gender') Gender
+              .col-sm-6                
+                  input(type='radio',checked=employee.gender=='Male', name='gender', value='Male', data-toggle='radio') 
+                  | Male
+                  br
+                  input(type='radio',checked=employee.gender=='Female', name='gender', value='Female', data-toggle='radio')
+                  | Female
+                  br          
+          .form-group
+            .col-md-offset-3.col-md-8
+              input.btn.btn-danger(type='submit', value='Save')
+              a.btn.btn-primary(href='/employee/index') Back to list

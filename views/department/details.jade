@@ -1,0 +1,29 @@
+extends ../layout
+
+block content    
+    h2.text-center EMPLOYEE MANAGEMENT
+    br
+    br           
+    h3.text-center Department:  #{department}
+    table.table
+     thead
+      tr.table-primary
+        th Index
+        th Name
+        th Address
+        th Phone        
+        th Email
+        th Gender
+        
+     tbody
+      each employee, i in list
+       tr
+        td= i+1
+        td= employee.fullname  
+        td= employee.address
+        td= employee.phone
+        td= employee.email        
+        td= employee.gender     
+    .form-group
+     .col-md-offset-3.col-md-8
+      a.btn.btn-primary(href='/department/index') Back to list

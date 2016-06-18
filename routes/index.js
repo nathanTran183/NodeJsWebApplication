@@ -3,5 +3,6 @@ var router = express.Router();
 
 /* GET home page. */
 exports.index = (req, res, next) => {
-  res.render('index', { title: 'Express' });
+    console.log(req.user);
+    res.render('index', { title: 'Express' });
 };

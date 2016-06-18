@@ -1,0 +1,41 @@
+extends ../layout
+
+block content
+    script.
+      $(document).ready(function() {
+      $('#departmentTable').DataTable();
+      } );
+    h2.text-center DEPARTMENT MANAGEMENT
+    br
+    br    
+    p
+     if user
+      a(href='/department/add') Add new department    
+    table.table#departmentTable
+     thead
+      tr
+        th ID
+        th Name
+        th Phone
+        th Manager
+        th Option
+     tbody
+      each department, i in list
+       tr
+        td= i+1
+        td= department.name
+        td= department.officephone
+        if department.manager!=null
+         td= department.manager.fullname
+        else
+         td.table-danger "Is not appointed!"        
+        td           
+          a.btn.btn-primary.btn-sm(href='/department/details?id='+department.id, role='button')
+            span.glyphicon.glyphicon-list(title='Customer List', aria-hidden='true')          
+          if user            
+           a.btn.btn-warning.btn-sm(href='/department/edit?id='+department.id, role='button')
+             span.glyphicon.glyphicon-pencil(title='Edit Department', aria-hidden='true')             
+           a.btn.btn-danger.btn-sm(href='/department/delete?id='+department.id, role='button')
+            span.glyphicon.glyphicon-trash(title='Delete Department', aria-hidden='true')
+    
+          

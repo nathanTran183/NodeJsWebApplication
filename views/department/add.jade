@@ -1,0 +1,20 @@
+extends ../layout
+
+block content
+    .col-lg-10
+      .widget-item
+        h2.prof-name-list.text-center ADD NEW DEPARTMENT
+        hr
+        form(class='form-horizontal' ,action='/department/add', method='post')
+          .form-group
+            label.col-lg-3.control-label Department name
+            .col-lg-9
+              input.form-control(type='text', name='name',required)                   
+          .form-group
+            label.col-lg-3.control-label Office Phone
+            .col-lg-9
+              input.form-control(type='text', name='officephone',required)                                             
+          .form-group
+            .col-md-offset-3.col-md-8
+              input.btn.btn-danger(type='submit', value='Create')
+              a.btn.btn-primary(href='/department/index') Back to list

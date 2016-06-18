@@ -11,18 +11,27 @@ html
     link(href='/css/bootstrap.min.css', rel='stylesheet')    
     link(href='/css/shop-item.css', rel='stylesheet')
     // jQuery
+    link(rel='stylesheet', type='text/css', href='/css/jquery.dataTables.css')  
+    //script(type='text/javascript', src='/js/bootstrap-table.js')
+    //link(href='/css/dataTables.bootstrap.css', rel='stylesheet')
+    
+    script(src='/js/jquery.dataTables.min.js')
     script(src='/js/jquery.js')
     script(src='/js/jquery.min.js')
     // Bootstrap Core JavaScript
-    script(src='../js/bootstrap.min.js')
-    //script(src='/js/main.js')
+    script(src='/js/bootstrap.min.js')
+    //script(src='/js/main.js')     
+    // DataTables
+    script(type='text/javascript', charset='utf8', src='/js/jquery.dataTables.js')
+    script(type='text/javascript', src='/js/dataTables.bootstrap.min.js')
   body
     include partial/header
-    #wrapper
-     include partial/navigation
+    #wrapper     
      #page-wrapper
       .container       
-       .row         
-        include partial/flash       
-        block content
+       .row 
+        include partial/navigation
+        .col-md-10
+         include partial/flash       
+         block content
       include partial/footer  

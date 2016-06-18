@@ -1,0 +1,34 @@
+extends ../layout
+
+block content
+    .col-lg-10
+      .widget-item
+        h2.prof-name-list.text-center EDIT DEPARTMENT
+        hr
+        form(class='form-horizontal' ,action='/department/edit', method='post')
+          input(type='hidden', name='id', value=department.id)
+          .form-group
+            label.col-lg-3.control-label Department name
+            .col-lg-9
+              input.form-control(type='text', name='name',value= department.name)                   
+          .form-group
+            label.col-lg-3.control-label Office Phone
+            .col-lg-9
+              input.form-control(type='text', name='officephone',value= department.officephone,required)                                             
+          .form-group
+            label.col-lg-3.control-label Manager
+            .col-lg-9
+              select.form-control(name='manager') 
+               if department.manager==null  
+                each emp, i in list                                                                          
+                  option(value= emp.id)= emp.fullname
+               else
+                each emp, i in list                                                     
+                 if department.manager.id==emp.id
+                  option(value= emp.id,selected='selected')= emp.fullname
+                 else                     
+                  option(value= emp.id)= emp.fullname                                           
+          .form-group
+            .col-md-offset-3.col-md-8
+              input.btn.btn-danger(type='submit', value='Create')
+              a.btn.btn-primary(href='/department/index') Back to list

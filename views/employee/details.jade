@@ -1,0 +1,29 @@
+extends ../layout
+
+block content
+    .widget-item
+          .col-lg-10
+            h2.prof-name-list.text-center EMPLOYEE DETAILS!
+            hr
+            .col-lg-2
+            .col-lg-10
+              dl.dl-horizontal
+                dt Id
+                dd= employee.id
+                dt Full Name
+                dd= employee.fullname
+                dt Department
+                dd= employee.department.name
+                dt Address
+                dd= employee.address
+                dt Phone
+                dd=  employee.phone
+                dt Email
+                dd=  employee.email
+                dt Gender
+                dd= employee.gender                           
+              .form-group
+                .col-md-offset-4.col-lg-8
+                 if user
+                  a.btn.btn-warning.btn-sm(href='/employee/edit?id='+employee.id, role='button')='Edit Employee'
+                 a.btn.btn-primary.btn-sm(href='/employee/index') Back to list

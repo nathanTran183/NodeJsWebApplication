@@ -1,0 +1,30 @@
+extends ../layout
+
+block content
+    .widget-item
+          .col-lg-10
+            h2.prof-name-list.text-center DO YOU WANT TO DELETE THIS EMPLOYEE!
+            hr
+            .col-lg-2
+            .col-lg-10
+              dl.dl-horizontal
+                dt Id
+                dd= employee.id
+                dt Full Name
+                dd= employee.fullname
+                dt Department
+                dd= employee.department.name
+                dt Address
+                dd= employee.address
+                dt Phone
+                dd=  employee.phone
+                dt Email
+                dd=  employee.email
+                dt Gender
+                dd= employee.gender                
+            form(name='DeleteForm', method='post', action='/employee/delete')
+              .form-group
+                .col-md-offset-4.col-lg-8
+                  input(type='hidden', name='id', value=employee.id)
+                  input.btn.btn-danger(type='submit', value='Delete')
+                  a.btn.btn-primary(href='/employee/index') Back to list

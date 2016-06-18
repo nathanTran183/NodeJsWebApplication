@@ -12,6 +12,7 @@ var expressValidator = require('express-validator');
 var routes = require('./routes/index');
 var employees = require('./routes/employee');
 var users = require('./routes/users');
+var departments = require('./routes/department');
 //connect database
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/EmployeeManagement');
@@ -54,13 +55,26 @@ app.get('/login', users.getlogin);
 app.post('/login',users.postlogin);
 app.get('/userIndex',passportConfig.isAuthenticated,users.userIndex);
 app.get('/logout',users.logout);
+app.get('/changepassword',passportConfig.isAuthenticated,users.getChangePassword);
+app.post('/changepassword',users.postChangePassword);
+//Employee
 app.get('/employee/index',employees.getIndex);
-app.get('/employee/add',employees.getAdd);
+app.get('/employee/details',employees.getDetails);
+app.get('/employee/add',passportConfig.isAuthenticated,employees.getAdd);
 app.post('/employee/add',employees.postAdd);
-//app.get('/employee/edit',employees.getEdit);
-//app.post('/employee/edit',employee.postEdit);
-//app.get('/employee/delete',employees.getDelete);
-//app.post('/employee/delete',employee.postDelete);
+app.get('/employee/edit',passportConfig.isAuthenticated,employees.getEdit);
+app.post('/employee/edit',employees.postEdit);
+app.get('/employee/delete',passportConfig.isAuthenticated,employees.getDelete);
+app.post('/employee/delete',employees.postDelete);
+//Department
+app.get('/department/index',departments.getIndex);
+app.get('/department/details',departments.getEmployeeList);
+app.get('/department/add',passportConfig.isAuthenticated,departments.getAdd);
+app.post('/department/add',departments.postAdd);
+app.get('/department/edit',passportConfig.isAuthenticated,departments.getEdit);
+app.post('/department/edit',departments.postEdit);
+app.get('/department/delete',passportConfig.isAuthenticated,departments.getDelete);
+app.post('/department/delete',departments.postDelete);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -68,12 +82,6 @@ app.use(function(req, res, next) {
   err.status = 404;
   next(err);
 });
-
-
-
-
-
-// error handlers
 
 // development error handler
 // will print stacktrace
