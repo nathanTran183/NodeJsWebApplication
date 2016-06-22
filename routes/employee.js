@@ -67,7 +67,7 @@ exports.getEdit = (req,res) => {
         Employee.findById(id).populate('department').exec((err, employee) => {
             if (err) { return next(err); }        
             for(var i in depList){                    
-                if(depList[i].manager.id==id){
+                if(depList[i].manager!=null && depList[i].manager.id==id){
                     flag=true;
                     break;
                 }

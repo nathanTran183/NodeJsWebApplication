@@ -5,9 +5,12 @@
         <group>
             <file>file:/E:/Project_Node.js/NodeJsWebApplication/routes/department.js</file>
             <file>file:/E:/Project_Node.js/NodeJsWebApplication/views/department/index.jade</file>
-            <file>file:/E:/Project_Node.js/NodeJsWebApplication/views/department/edit.jade</file>
-            <file>file:/E:/Project_Node.js/NodeJsWebApplication/routes/users.js</file>
-            <file>file:/E:/Project_Node.js/NodeJsWebApplication/config/passport.js</file>
+            <file>file:/E:/Project_Node.js/NodeJsWebApplication/views/employee/index.jade</file>
+            <file>file:/E:/Project_Node.js/NodeJsWebApplication/model/Department.js</file>
+            <file>file:/E:/Project_Node.js/NodeJsWebApplication/views/employee/add.jade</file>
+            <file>file:/E:/Project_Node.js/NodeJsWebApplication/routes/employee.js</file>
+            <file>file:/E:/Project_Node.js/NodeJsWebApplication/views/changepassword.jade</file>
+            <file>file:/E:/Project_Node.js/NodeJsWebApplication/views/login.jade</file>
             <file>file:/E:/Project_Node.js/NodeJsWebApplication/app.js</file>
         </group>
     </open-files>
